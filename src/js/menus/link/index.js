@@ -42,7 +42,11 @@ Link.prototype = {
                 this._createPanel('', '')
             } else {
                 // 选中内容了
-                this._createPanel(editor.selection.getSelectionText(), '')
+                let text=editor.selection.getSelectionText();
+                if(editor._selectedImg){
+                    text=editor._selectedImg[0].outerHTML.replace(/\"/g,"'");
+                }
+                this._createPanel(text, '')
             }
         }
     },
